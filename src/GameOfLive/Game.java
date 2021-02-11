@@ -7,8 +7,9 @@ public class Game {
     Timer timer = new Timer();
     private static Cell[][] field;
 
-    private int fieldCount = 20; //20
-    private int initStartLiveCount = 110; //60
+    private int fieldCount = 20; //HOW BIG SHOULD YOUR FIELD BE?
+    private int initStartLiveCount = 110; //CHANGE HOW MUCH CELLS SHOULD BE ALIVE AT THE BEGINNING
+
     private int seconds = 0;
     private int generation = 1;
     private long tempNeighbourCount = 0;
