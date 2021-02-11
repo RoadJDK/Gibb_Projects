@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Collatz:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Collatz_jar</output-path>
+    <root id="archive" name="Collatz.jar">
+      <element id="module-output" name="GIBB_Projects" />
+    </root>
+  </artifact>
+</component>
