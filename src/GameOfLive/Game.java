@@ -1,5 +1,6 @@
 package GameOfLive;
 
+import java.io.IOException;
 import java.util.*;
 
 public class Game {
@@ -7,14 +8,15 @@ public class Game {
     Timer timer = new Timer();
     private static Cell[][] field;
 
-    private int fieldCount = 20; //HOW BIG SHOULD YOUR FIELD BE?
-    private int initStartLiveCount = 110; //CHANGE HOW MUCH CELLS SHOULD BE ALIVE AT THE BEGINNING
+    private int fieldCount = 30; //HOW BIG SHOULD YOUR FIELD BE?
+    private int initStartLiveCount = 120; //CHANGE HOW MUCH CELLS SHOULD BE ALIVE AT THE BEGINNING
 
     private int seconds = 0;
     private int generation = 1;
     private long tempNeighbourCount = 0;
 
     public void run() {
+        System.out.println("test");
         worldInit();
         startTimer();
     }
@@ -49,11 +51,11 @@ public class Game {
     private void getNeighboursAliveCount(int x, int y) {
         var list = new ArrayList<Cell>();
 
-        for (int colNum = x - 1 ; colNum <= (x + 1) ; colNum +=1  ) {
+        for (var colNum = x - 1 ; colNum <= (x + 1) ; colNum +=1  ) {
 
-            for (int rowNum = y - 1 ; rowNum <= (y + 1) ; rowNum +=1  ) {
+            for (var rowNum = y - 1 ; rowNum <= (y + 1) ; rowNum +=1  ) {
 
-                if(! ((colNum == y) && (rowNum == y))) {
+                if(! ((colNum == x) && (rowNum == y))) {
 
                     if(withinGrid (colNum, rowNum)) {
                         list.add(field[colNum][rowNum]);
@@ -131,25 +133,25 @@ public class Game {
         TimerTask task;
 
         task = new TimerTask() {
-            private final int MAX_SECONDS = 100;
 
             @Override
             public void run() {
-                if (seconds < MAX_SECONDS) {
-                    clearScreen();
-                    update();
-                    checkNeighbour();
-                    seconds++;
-                } else {
-                    cancel();
-                }
+                clearScreen();
+                update();
+                checkNeighbour();
+                seconds++;
+                clearScreen();
             }
         };
-        timer.schedule(task, 0, 100);
+        timer.schedule(task, 0, 400);
     }
 
     public static void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+        try {
+            if (System.getProperty("os.name").contains("Windows"))
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            else
+                Runtime.getRuntime().exec("clear");
+        } catch (IOException | InterruptedException ex) {}
     }
 }

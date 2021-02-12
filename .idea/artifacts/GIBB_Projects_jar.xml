@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="GIBB_Projects:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/GIBB_Projects_jar</output-path>
+    <root id="archive" name="GIBB_Projects.jar">
+      <element id="module-output" name="GIBB_Projects" />
+    </root>
+  </artifact>
+</component>
