@@ -2,9 +2,11 @@ package BubbleSort;
 
 public class Algorythm {
     private int[] arr = {0,9,4,6,2,8,5,1,7,3};
+    Stopwatch stopwatch;
 
     public void Run() {
-        sort(); print();
+        stopwatch = new Stopwatch();
+        sort(); stopwatch.stop(); print();
     }
 
     private void sort() {
