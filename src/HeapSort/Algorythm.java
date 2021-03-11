@@ -1,4 +1,4 @@
-package HeatSort;
+package HeapSort;
 
 public class Algorythm {
         public void sort(int arr[])

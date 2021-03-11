@@ -1,4 +1,4 @@
-package HeatSort;
+package HeapSort;
 
 public class Program {
     public static void main(String args[])
