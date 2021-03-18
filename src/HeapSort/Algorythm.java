@@ -1,41 +1,54 @@
 package HeapSort;
 
 public class Algorythm {
-        public void sort(int arr[])
-        {
-            var n = arr.length;
+    private int[] arr = {0,9,4,6,2,8,5,1,7,3};
+    Stopwatch stopwatch;
 
-            for (var i = n / 2 - 1; i >= 0; i--)
-                heapify(arr, n, i);
+    public void Run() {
+        stopwatch = new Stopwatch();
+        sort(); print();
+    }
 
-            for (var i = n - 1; i > 0; i--) {
-                var temp = arr[0];
-                arr[0] = arr[i];
-                arr[i] = temp;
+    private void sort()
+    {
+        var n = arr.length;
+         for (var i = n / 2 - 1; i >= 0; i--)
+             heapify(arr, n, i);
+         for (var i = n - 1; i > 0; i--) {
+             var temp = arr[0];
+             arr[0] = arr[i];
+             arr[i] = temp;
+             heapify(arr, i, 0);
+         }
+    }
 
-                heapify(arr, i, 0);
-            }
+    private void heapify(int arr[], int n, int i)
+    {
+        var largest = i;
+        var left = 2 * i + 1;
+        var right = 2 * i + 2;
+
+        if (left < n && arr[left] > arr[largest])
+            largest = left;
+
+        if (right < n && arr[right] > arr[largest])
+            largest = right;
+
+        if (largest != i) {
+            var temp = arr[i];
+            arr[i] = arr[largest];
+            arr[largest] = temp;
+
+            heapify(arr, n, largest);
         }
+    }
 
-        void heapify(int arr[], int n, int i)
-        {
-            var largest = i;
-            var l = 2 * i + 1;
-            var r = 2 * i + 2;
+    private void print()
+    {
+        for (var i = 0; i < arr.length; ++i)
+            System.out.print(arr[i] + " ");
 
-            if (l < n && arr[l] > arr[largest])
-                largest = l;
-
-            if (r < n && arr[r] > arr[largest])
-                largest = r;
-
-            if (largest != i) {
-                var swap = arr[i];
-                arr[i] = arr[largest];
-                arr[largest] = swap;
-
-                heapify(arr, n, largest);
-            }
-        }
-
+        System.out.println();
+        System.out.println("that took: " + stopwatch.stop() + "ms");
+    }
 }

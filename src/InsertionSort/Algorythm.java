@@ -6,7 +6,7 @@ public class Algorythm {
 
     public void Run() {
         stopwatch = new Stopwatch();
-        sort(); stopwatch.stop(); print();
+        sort(); print();
     }
 
     private void sort() {
@@ -23,11 +23,12 @@ public class Algorythm {
         }
     }
 
-    void print()
+    private void print()
     {
         for (var i = 0; i < arr.length; ++i)
             System.out.print(arr[i] + " ");
 
         System.out.println();
+        System.out.println("that took: " + stopwatch.stop() + "ms");
     }
 }

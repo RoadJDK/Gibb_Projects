@@ -1,12 +1,12 @@
 package QuickSort;
 
 public class Algorythm {
-    private int[] arr = {0,9,4,6,2,8,5,1,7,3};
+    private int[] arr = {0,9,4,6,2,8,5,1,7,3,123123,213,2,21,3,2,2,32,3,12,3,123,123,12,3,12,31,23,12,3,123,12,45,765,43,2456,432,45675,43,4456,543,2456,7543,245,675,4321,34567,543,45678,6543,456787,65,432,1,3456};
     Stopwatch stopwatch;
 
     public void Run() {
         stopwatch = new Stopwatch();
-        sort(0,9); stopwatch.stop(); print();
+        sort(0,9); print();
     }
 
     private void sort(int begin, int end) {
@@ -46,6 +46,5 @@ public class Algorythm {
             System.out.print(arr[i] + " ");
 
         System.out.println();
-        System.out.println("that took: " + stopwatch.stop() + "ms");
     }
 }
